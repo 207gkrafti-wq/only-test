@@ -21,7 +21,11 @@ if (isset($_SESSION['user'])) {
 <body>
     <?php
     if (isset($_SESSION['message'])) {
-        echo "<div class=\"message\">" . $_SESSION['message'] . "</div>";
+        echo "<div class=\"message\">";
+        foreach ($_SESSION['message'] as $key => $value) {
+            echo $value.'; ';
+        }
+        echo "</div>";
         unset($_SESSION['message']);
     }
     ?>
@@ -30,8 +34,8 @@ if (isset($_SESSION['user'])) {
         <div class="form">
             <input type="text" name="full_name" id="full_name" placeholder="ФИО"
                 value="<?= $_SESSION['old_data']['full_name'] ?? '' ?>">
-                <input type="text" name="login" id="login" placeholder="Логин"
-                    value="<?= $_SESSION['old_data']['login'] ?? '' ?>">
+            <input type="text" name="login" id="login" placeholder="Логин"
+                value="<?= $_SESSION['old_data']['login'] ?? '' ?>">
             <input type="email" name="email" id="email" placeholder="Почта"
                 value="<?= $_SESSION['old_data']['email'] ?? '' ?>">
             <input type="tel" name="tel" id="tel" placeholder="Телефон"

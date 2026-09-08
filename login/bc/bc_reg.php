@@ -26,36 +26,27 @@ try {
             }
         }
 
-        // if (!empty($errors)) {
-        //     return $errors;
-        // }
-
         if (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL)) {
-            // $errors = 'Некорректный email';
             $errors[] = 'Некорректный email';
         }
 
         //Проверка пароля
         if (strlen($_POST['password']) < 8) {
-            $errors = 'Пароль должен быть от 8 символов!';
-            // return $errors;
-        } 
+            $errors[] = 'Пароль должен быть от 8 символов!';
+        }
         if ($_POST['password'] != $_POST['password2']) {
-            $errors = 'Пароли не совпадают!';
-            // return $errors;
-        } 
+            $errors[] = 'Пароли не совпадают!';
+        }
         if (!preg_match('/^[a-z\d_]+$/ui', trim($_POST['password']))) {
-            $errors = 'Допустимые символы для пароля a-zA-Z 1-9 _ ';
-            // return $errors;
+            $errors[] = 'Допустимые символы для пароля a-zA-Z 1-9 _ ';
         }
 
         //Проверка логина
         if (strlen($_POST['login']) < 6) {
-            $errors = 'Логин должен быть от 6 символов!';
-            // return $errors;
-        } elseif (!preg_match('/^[a-z\d_]+$/ui', trim($_POST['login']))) {
-            $errors = 'Допустимые символы для логина a-zA-Z 1-9 _ ';
-            // return $errors;
+            $errors[] = 'Логин должен быть от 6 символов!';
+        }
+        if (!preg_match('/^[a-z\d_]+$/ui', trim($_POST['login']))) {
+            $errors[] = 'Допустимые символы для логина a-zA-Z 1-9 _ ';
         }
         $login = trim($_POST['login']);
         $tel = trim($_POST['tel']);
@@ -66,10 +57,10 @@ try {
         $result = $conn->get_result();
 
         if ($result->num_rows > 0) {
-            $errors = 'Логин, почта или номер телефона уже заняты!';
+            $errors[] = 'Логин, почта или номер телефона уже заняты!';
             $conn->close();
-            return $errors;
         }
+        return $errors;
 
 
     }
@@ -105,8 +96,7 @@ try {
         exit();
     }
 } catch (\Throwable $th) {
-    // $_SESSION['message'] = 'Что-то пошло не так';
-    $_SESSION['message'] = $th;
+    $_SESSION['message'] = 'Что-то пошло не так';
     header('Location: ../reg.php');
     exit();
 }
