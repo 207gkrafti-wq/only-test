@@ -2,8 +2,11 @@
 ob_start();
 session_start();
 include_once '../../config.php';
-header("Location: ../reg.php");
 
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    header("Location: ../reg.php");
+    exit();
+}
 
 try {
     function validReg()

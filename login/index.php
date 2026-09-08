@@ -21,7 +21,15 @@ if (isset($_SESSION['user'])) {
 <body>
     <?php
     if (isset($_SESSION['message'])) {
-        echo "<div class=\"message\">" . $_SESSION['message'] . "</div>";
+        echo "<div class=\"message\">";
+        if (is_array($_SESSION['message'])) {
+            foreach ($_SESSION['message'] as $key => $value) {
+                echo $value.'; ';
+            }
+        } else {
+            echo $_SESSION['message'];
+        }
+        echo "</div>";
         unset($_SESSION['message']);
     }
     ?>

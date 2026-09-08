@@ -2,8 +2,11 @@
 ob_start();
 session_start();
 include_once '../../config.php';
-header("Location: ../");
 
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    header("Location: ../");
+    exit();
+}
 
 try {
     function validReg()
@@ -68,7 +71,7 @@ try {
                     'full_name' => $user['full_name'],
                     'login' => $user['login'],
                     'email' => $user['email'],
-                    'password' => $user['password']
+                    'tel' => $user['tel'],
                 ];
             }
             header('Location: ../../');
