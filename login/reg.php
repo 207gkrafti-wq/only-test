@@ -8,11 +8,14 @@ if (isset($_SESSION['user'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery.mask.min.js"></script>
@@ -47,7 +50,7 @@ if (isset($_SESSION['user'])) {
             <input type="password" name="password" id="password" class="auth__input password" placeholder="Пароль"
                 value="<?= $_SESSION['old_data']['password'] ?? '' ?>">
             <input type="password" name="password2" id="password2" class="auth__input password" placeholder="Повторный пароль">
-            <label for="viewPassword" class="auth__checkbox-label">показать пароль <input type="checkbox" id="viewPassword" class="auth__checkbox"></label>
+            <label for="viewPassword" class="auth__checkbox-label">Показать пароль <input type="checkbox" id="viewPassword" class="auth__checkbox"></label>
             <button type="submit" class="auth__button">Создать пользователя</button>
             <p class="auth__footer">Уже зарегистрированы? <a href="index.php" class="auth__link">Войти</a></p>
         </form>

@@ -20,8 +20,8 @@ function loadEnv(string $path): void
         ) {
             $value = substr($value, 1, -1);
         }
-        putenv("$key=$value");
         $_ENV[$key] = $value;
+        $_SERVER[$key] = $value;
     }
 }
 loadEnv(__DIR__.'/.env');

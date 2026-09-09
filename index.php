@@ -8,14 +8,17 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mask.min.js"></script>
-    <title>Home</title>
+    <title>Личный кабинет</title>
 </head>
 <body>
     <div class="profile">
@@ -63,7 +66,7 @@ if (!isset($_SESSION['user'])) {
                 <input type="password" name="old_password" id="password" class="edit-form__input password" placeholder="Старый пароль">
                 <input type="password" name="new_password" id="new_password" class="edit-form__input password" placeholder="Новый пароль">
                 <input type="password" name="new_password2" id="password2" class="edit-form__input password" placeholder="Подтвердите новый пароль">
-                <label for="viewPassword" class="edit-form__checkbox-label">показать пароль <input type="checkbox" id="viewPassword" class="edit-form__checkbox"></label>
+                <label for="viewPassword" class="edit-form__checkbox-label">Показать пароль <input type="checkbox" id="viewPassword" class="edit-form__checkbox"></label>
             </div>
             <button type="submit" class="edit-form__button">Сохранить</button>
         </form>

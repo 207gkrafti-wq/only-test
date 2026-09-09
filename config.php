@@ -9,10 +9,10 @@ include_once 'load_env.php';
 
 
 $mysqli = new mysqli(
-    getenv('DB_HOSTNAME'),
-    getenv('DB_USERNAME'),
-    getenv('DB_PASSWORD'),
-    getenv('DB_DB'),
+    $_ENV['DB_HOSTNAME'] ?? '',
+    $_ENV['DB_USERNAME'] ?? '',
+    $_ENV['DB_PASSWORD'] ?? '',
+    $_ENV['DB_DB'] ?? ''
 );
 
 if ($mysqli->connect_error) {

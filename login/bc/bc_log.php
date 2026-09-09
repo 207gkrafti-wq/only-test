@@ -64,7 +64,7 @@ try {
 
     function checkCapcha()
     {
-        $key = getenv('KEY', );
+        $key = getenv('KEY');
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $data = [
             'secret' => $key,
