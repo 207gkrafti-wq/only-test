@@ -33,10 +33,10 @@ if (!isset($_SESSION['user'])) {
     }
     ?>
     <ul>
-        <li>ФИО: <?= $_SESSION['user']['full_name'] ?></li>
-        <li>Логин: <?= $_SESSION['user']['login'] ?></li>
-        <li>Email: <?= $_SESSION['user']['email'] ?></li>
-        <li>Номер телефона: <?= $_SESSION['user']['tel'] ?></li>
+        <li>ФИО: <?= htmlspecialchars($_SESSION['user']['full_name']) ?></li>
+        <li>Логин: <?= htmlspecialchars($_SESSION['user']['login']) ?></li>
+        <li>Email: <?= htmlspecialchars($_SESSION['user']['email']) ?></li>
+        <li>Номер телефона: <?= htmlspecialchars($_SESSION['user']['tel']) ?></li>
     </ul>
     <form action="update/upd_con.php" method="post" class="form-login">
         <h1>Регистрация</h1>
@@ -52,7 +52,7 @@ if (!isset($_SESSION['user'])) {
         </div>
         <button type="submit" class="btn">Сохранить</button>
     </form>
-    <form action="" method="post" class="form-login">
+    <form action="update/upd_pasw.php" method="post" class="form-login">
         <h1>Регистрация</h1>
         <div class="form">
             <input type="password" name="old_password" id="password" class="password" placeholder="Старый пароль">
