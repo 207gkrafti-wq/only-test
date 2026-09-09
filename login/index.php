@@ -11,21 +11,23 @@ if (isset($_SESSION['user'])) {
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery.mask.min.js"></script>
     <title>Вход</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
+
 <body class="auth">
-        <div class="auth__container">
+    <div class="auth__container">
         <?php
         if (isset($_SESSION['message'])) {
             echo "<div class=\"message\">";
             if (is_array($_SESSION['message'])) {
                 foreach ($_SESSION['message'] as $key => $value) {
-                    echo $value.'; ';
+                    echo $value . '; ';
                 }
             } else {
                 echo $_SESSION['message'];
@@ -38,7 +40,10 @@ if (isset($_SESSION['user'])) {
             <h1 class="auth__title">Авторизация</h1>
             <input type="text" name="login" id="login" class="auth__input" placeholder="Ваш логин, email или телефон">
             <input type="password" name="password" id="password" class="auth__input password" placeholder="Пароль">
-            <label for="viewPassword" class="auth__checkbox-label">показать пароль <input type="checkbox" id="viewPassword" class="auth__checkbox"></label>
+            <label for="viewPassword" class="auth__checkbox-label">показать пароль <input type="checkbox"
+                    id="viewPassword" class="auth__checkbox"></label>
+            <div class="g-recaptcha" data-sitekey="6LeyF7ItAAAAAOjcVgUjVYnFRZzT36UQ80Er4FYr"></div>
+            <div class="text-danger" id="recapchaError"></div>
             <button type="submit" class="auth__button">Войти</button>
             <p class="auth__footer">Еще не зарегистрированы? <a href="reg.php" class="auth__link">Регистрация</a></p>
         </form>
