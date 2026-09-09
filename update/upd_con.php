@@ -16,23 +16,19 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 try {
     function validReg()
     {
-        // if (isset($_SESSION['user'])) {
-        // header("Location: ../index.php");
-        // exit();
-        // }
 
         global $mysqli;
         $errors = [];
-
+        
         //проверка на пустые поля
-        // $required = ['full_name', 'tel', 'email', 'login'];
-        // foreach ($required as $name) {
-        //     if (empty(trim($_POST[$name] ?? ''))) {
-        //         // $errors = 'Заполните все поля!';
-        //         $errors[] = 'Заполните все поля!';
-        //         break;
-        //     }
-        // }
+        $required = ['full_name', 'tel', 'email', 'login'];
+        $i = 0;
+        foreach ($required as $name) {
+            if (empty(trim($_POST[$name] ?? ''))) {
+                $i++;
+            }
+        }
+        if($i == count($required)) $errors[] = 'Нет данных для замены!';
 
         if (!filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL) && !empty($_POST['email'])) {
             $errors[] = 'Некорректный email';

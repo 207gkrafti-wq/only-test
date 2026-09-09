@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 try {
     function validReg()
     {
-        // if (isset($_SESSION['user'])) {
-        // header("Location: ../index.php");
-        // exit();
-        // }
+        if (!isset($_SESSION['user'])) {
+            header("Location: ../");
+            exit();
+        }
 
         global $mysqli;
         $errors = [];

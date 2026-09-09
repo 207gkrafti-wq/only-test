@@ -2,6 +2,10 @@
 ob_start();
 session_start();
 include_once '../../config.php';
+if (isset($_SESSION['user'])) {
+    header("Location: ../index.php");
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     header("Location: ../reg.php");
